@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Rangel - Desenvolvedor Web Profissional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .whatsapp-big-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 450px;
+    margin: 30px auto;
+
+    padding: 18px 25px;
+
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    border-radius: 12px;
+    text-decoration: none;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    transition: all 0.25s ease-in-out;
+}
+
+.whatsapp-big-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.30);
+}
+
+.whatsapp-big-button i {
+    font-size: 1.8rem;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-primario: #1e3a8a;
+            --azul-claro: #3b82f6;
+            --azul-escuro: #172554;
+            --dourado: #fbbf24;
+            --dourado-escuro: #f59e0b;
+            --branco: #ffffff;
+            --cinza-claro: #f8fafc;
+            --cinza-texto: #64748b;
+            --cinza-escuro: #1e293b;
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --sombra-forte: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --branco: #0f172a;
+            --cinza-claro: #1e293b;
+            --cinza-texto: #94a3b8;
+            --cinza-escuro: #f1f5f9;
+            --sombra-suave: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --sombra-media: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --sombra-forte: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--cinza-texto);
+            background: var(--branco);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Header Desktop-First com Mobile Adaptation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--sombra-suave);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(15, 23, 42, 0.98);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-primario);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            color: var(--dourado);
+            font-size: 1.8rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--cinza-escuro);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        [data-theme="dark"] .nav-links a {
+            color: var(--cinza-escuro);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dourado), var(--dourado-escuro));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-primario);
+            transform: translateY(-2px);
+        }
+
+        /* Botão Tema */
+        .theme-toggle {
+            width: 50px;
+            height: 26px;
+            background: var(--cinza-claro);
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cinza-texto);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .theme-toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: var(--dourado);
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-slider i {
+            font-size: 10px;
+            color: var(--branco);
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            transform: translateX(24px);
+        }
+
+        .menu-mobile {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--azul-primario);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .menu-mobile:hover {
+            transform: scale(1.1);
+            color: var(--dourado);
+            background: var(--cinza-claro);
+        }
+
+        /* Hero Section Desktop-First */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--azul-primario) 0%, var(--azul-escuro) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--branco);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-text .destaque {
+            color: var(--dourado);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text .destaque::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--dourado);
+            border-radius: 2px;
+            animation: expandWidth 1s ease forwards;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro));
+            color: var(--branco);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-portfolio {
+            background: transparent;
+            color: var(--branco);
+            border: 2px solid var(--branco);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-portfolio:hover {
+            background: var(--branco);
+            color: var(--azul-primario);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Image Desktop */
+        .hero-image {
+            animation: fadeInRight 1s ease;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--dourado), transparent);
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-image-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border-radius: 50%;
+            border: 2px solid var(--dourado);
+            opacity: 0.5;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-image img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--dourado);
+            box-shadow: 
+                0 0 0 10px rgba(251, 191, 36, 0.2),
+                0 0 0 20px rgba(251, 191, 36, 0.1),
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 0 15px rgba(251, 191, 36, 0.3),
+                0 0 0 30px rgba(251, 191, 36, 0.15),
+                0 40px 80px rgba(0, 0, 0, 0.5),
+                inset 0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.4), transparent);
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        .hero-image:hover::before {
+            width: 500px;
+            height: 500px;
+            opacity: 0.6;
+        }
+
+        /* Seções Gerais Desktop */
+        .sobre, .servicos, .segmentos, .portfolio, .depoimentos, .contato {
+            padding: 6rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .sobre {
+            background: var(--branco);
+        }
+
+        [data-theme="dark"] .sobre {
+            background: var(--cinza-claro);
+        }
+
+        .servicos {
+            background: var(--cinza-claro);
+        }
+
+        [data-theme="dark"] .servicos {
+            background: var(--branco);
+        }
+
+        .segmentos {
+            background: var(--branco);
+        }
+
+        [data-theme="dark"] .segmentos {
+            background: var(--cinza-claro);
+        }
+
+        .portfolio {
+            background: var(--cinza-claro);
+        }
+
+        [data-theme="dark"] .portfolio {
+            background: var(--branco);
+        }
+
+        .depoimentos {
+            background: var(--branco);
+        }
+
+        [data-theme="dark"] .depoimentos {
+            background: var(--cinza-claro);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--azul-primario);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .section-title h2 {
+            color: var(--cinza-escuro);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dourado), var(--dourado-escuro));
+            border-radius: 2px;
+        }
+
+        /* Sobre Desktop */
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .sobre-image {
+            text-align: center;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .sobre-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: var(--sombra-media);
+            transition: transform 0.3s ease;
+        }
+
+        .sobre-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .sobre-text {
+            animation: fadeInRight 1s ease;
+        }
+
+        .sobre-text h3 {
+            font-size: 1.8rem;
+            color: var(--azul-primario);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .sobre-text h3 {
+            color: var(--cinza-escuro);
+        }
+
+        .sobre-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--cinza-texto);
+        }
+
+        .qualidades {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .qualidade-card {
+            background: var(--cinza-claro);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .qualidade-card {
+            background: var(--branco);
+        }
+
+        .qualidade-card:hover {
+            box-shadow: var(--sombra-media);
+            transform: translateY(-5px);
+        }
+
+        .qualidade-card i {
+            font-size: 2.5rem;
+            color: var(--dourado);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .qualidade-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .qualidade-card h4 {
+            color: var(--azul-primario);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .qualidade-card h4 {
+            color: var(--cinza-escuro);
+        }
+
+        /* Serviços Desktop */
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .servico-card {
+            background: var(--branco);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .servico-card {
+            background: var(--cinza-claro);
+        }
+
+        .servico-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--azul-primario), var(--dourado));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .servico-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .servico-card:hover {
+            box-shadow: var(--sombra-forte);
+            transform: translateY(-8px);
+        }
+
+        .servico-card i {
+            font-size: 3rem;
+            color: var(--azul-primario);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .servico-card i {
+            color: var(--cinza-escuro);
+        }
+
+        .servico-card:hover i {
+            transform: scale(1.1);
+            color: var(--dourado);
+        }
+
+        .servico-card h3 {
+            font-size: 1.5rem;
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .servico-card h3 {
+            color: var(--cinza-escuro);
+        }
+
+        .servico-card p {
+            color: var(--cinza-texto);
+            line-height: 1.6;
+        }
+
+        /* Segmentos Desktop */
+        .segmentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .segmento-card {
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-escuro));
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            color: var(--branco);
+            box-shadow: var(--sombra-media);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .segmento-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--dourado) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .segmento-card:hover::after {
+            opacity: 0.1;
+        }
+
+        .segmento-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--sombra-forte);
+        }
+
+        .segmento-card i {
+            font-size: 3rem;
+            color: var(--dourado);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .segmento-card:hover i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .segmento-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .segmento-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-exemplo {
+            background: var(--dourado);
+            color: var(--branco);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-exemplo:hover {
+            background: var(--dourado-escuro);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Portfólio Desktop */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--branco);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .portfolio-item {
+            background: var(--cinza-claro);
+        }
+
+        .portfolio-item:hover {
+            box-shadow: var(--sombra-forte);
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image {
+    height: auto;
+    aspect-ratio: 16 / 9; /* ou 1 / 1 para quadrado */
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+        
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(30, 58, 138, 0.9));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            color: var(--branco);
+            font-size: 1.3rem;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            color: var(--azul-primario);
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="dark"] .portfolio-info h3 {
+            color: var(--cinza-escuro);
+        }
+
+        .portfolio-info p {
+            color: var(--cinza-texto);
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--cinza-claro);
+            color: var(--azul-primario);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .tag {
+            background: var(--branco);
+            color: var(--cinza-escuro);
+        }
+
+        .tag:hover {
+            background: var(--dourado);
+            color: var(--branco);
+            transform: scale(1.05);
+        }
+
+        /* Depoimentos Desktop */
+        .depoimentos-container {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .depoimento-card {
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-escuro));
+            padding: 2.5rem;
+            border-radius: 25px;
+            color: var(--branco);
+            position: relative;
+            box-shadow: var(--sombra-forte);
+            transition: all 0.3s ease;
+        }
+
+        .depoimento-card:hover {
+            transform: scale(1.02);
+        }
+
+        .depoimento-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 5rem;
+            color: var(--dourado);
+            opacity: 0.3;
+        }
+
+        .depoimento-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .depoimento-autor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .autor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--dourado);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--branco);
+            transition: transform 0.3s ease;
+        }
+
+        .depoimento-card:hover .autor-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .autor-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .autor-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .depoimento-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .depoimento-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cinza-claro);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .depoimento-dot:hover {
+            background: var(--dourado);
+            transform: scale(1.2);
+        }
+
+        .depoimento-dot.active {
+            background: var(--dourado);
+            transform: scale(1.3);
+        }
+
+        /* Contato Desktop */
+        .contato {
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-escuro));
+            color: var(--branco);
+        }
+
+        .contato .section-title h2 {
+            color: var(--branco);
+        }
+
+        .contato-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .contato-info {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .contato-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--dourado);
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contato-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contato-item i {
+            font-size: 1.5rem;
+            color: var(--dourado);
+            width: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .contato-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .contato-item a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contato-item a:hover {
+            color: var(--dourado);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--dourado);
+            transform: translateY(-5px) rotate(360deg);
+            border-color: var(--branco);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .contato-form {
+            animation: fadeInRight 1s ease;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--branco);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--branco);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px var(--dourado);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--dourado), var(--dourado-escuro));
+            color: var(--branco);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-submit:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Footer Desktop */
+        footer {
+            background: var(--cinza-escuro);
+            color: var(--branco);
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .destaque {
+            color: var(--dourado);
+            font-weight: 600;
+        }
+
+        /* WhatsApp Flutuante Desktop */
+       .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--branco);
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Loading Desktop */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .loading {
+            background: rgba(15, 23, 42, 0.98);
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--cinza-claro);
+            border-top: 4px solid var(--dourado);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar Personalizada Desktop */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cinza-claro);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--dourado), var(--dourado-escuro));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--dourado-escuro);
+        }
+
+        /* Animações Suaves de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Overlay para menu mobile */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Tablets - Primeiro Breakpoint */
+        @media (max-width: 1024px) {
+            .servicos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .segmentos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+
+            .hero-image-wrapper {
+                width: 350px;
+                height: 350px;
+            }
+
+            .hero-image img {
+                width: 300px;
+                height: 300px;
+            }
+
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+        }
+
+        /* Tablets Pequenos e Phablets */
+        @media (max-width: 768px) {
+            /* Header Mobile */
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--branco);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                gap: 1.5rem;
+                overflow-y: auto;
+                z-index: 1000;
+            }
+
+            [data-theme="dark"] .nav-links {
+                background: var(--cinza-escuro);
+            }
+
+            .nav-links.active {
+                display: flex;
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1rem;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-links a:hover {
+                background: var(--cinza-claro);
+                transform: translateX(5px);
+            }
+
+            [data-theme="dark"] .nav-links a:hover {
+                background: var(--azul-primario);
+                color: var(--branco);
+            }
+
+            .nav-links a i {
+                font-size: 1rem;
+                color: var(--dourado);
+            }
+
+            .menu-mobile {
+                display: flex;
+            }
+
+            /* Hero Mobile */
+            .hero {
+                margin-top: 70px;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 2;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+
+            .hero-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* Seções Mobile */
+            .sobre, .servicos, .segmentos, .portfolio, .depoimentos, .contato {
+                padding: 4rem 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            /* Sobre Mobile */
+            .sobre-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .sobre-text {
+                text-align: center;
+            }
+
+            .qualidades {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 2rem auto 0;
+            }
+
+            /* Serviços Mobile */
+            .servicos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Segmentos Mobile */
+            .segmentos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Portfólio Mobile */
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-image {
+                height: 200px;
+            }
+
+            /* Contato Mobile */
+            .contato-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contato-info {
+                text-align: center;
+            }
+
+            .contato-item {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            /* Footer Mobile */
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Smartphones Pequenos */
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-image-wrapper {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .servico-card,
+            .segmento-card,
+            .portfolio-item {
+                padding: 1.5rem;
+            }
+
+            .depoimento-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .depoimento-text {
+                font-size: 1rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Ajustes para telas muito largas */
+        @media (min-width: 1400px) {
+            .hero-text h1 {
+                font-size: 4rem;
+            }
+
+            .hero-text p {
+                font-size: 1.4rem;
+            }
+
+            .hero-image-wrapper {
+                width: 450px;
+                height: 450px;
+            }
+
+            .hero-image img {
+                width: 400px;
+                height: 400px;
+            }
+
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+
+            .servicos-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .segmentos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Overlay para menu mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Header Desktop-First -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                Daniel Rangel
+            </a>
+            <div class="nav-container">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#segmentos">Segmentos</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="theme-toggle-slider">
+                        <i class="fas fa-sun" id="themeIcon"></i>
+                    </div>
+                </div>
+                <button class="menu-mobile" id="menuMobile">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section Desktop-First -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Olá, sou <span class="destaque">Daniel Rangel</span></h1>
+                <p>Especialista em criação, manutenção e otimização de websites profissionais para o seu negócio</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5585997406934" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        Falar no WhatsApp
+                    </a>
+                    <a href="#portfolio" class="btn btn-portfolio">
+                        <i class="fas fa-briefcase"></i>
+                        Ver Portfólio
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="eu.jpeg" alt="Daniel Rangel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section Desktop -->
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Sobre Mim</h2>
+            </div>
+            <div class="sobre-content">
+                <div class="sobre-image reveal">
+                    <img src="https://i.pinimg.com/736x/fd/ae/8b/fdae8b428a0e7a6794c865c0c7bece11.jpg" alt="Daniel Rangel">
+                </div>
+                <div class="sobre-text reveal">
+                    <h3>Desenvolvedor Web com Foco em Resultados</h3>
+                    <p>Com anos de experiência no desenvolvimento web, sou especializado em criar soluções digitais que não apenas impressionam visualmente, mas também geram resultados reais para os negócios.</p>
+                    <p>Minha abordagem combina design moderno, tecnologia de ponta e um atendimento personalizado para garantir que cada projeto atenda exatamente às necessidades do cliente.</p>
+                    <div class="qualidades">
+                        <div class="qualidade-card reveal">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Performance</h4>
+                            <p>Sites rápidos e otimizados</p>
+                        </div>
+                        <div class="qualidade-card reveal">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Segurança</h4>
+                            <p>Proteção de dados garantida</p>
+                        </div>
+                        <div class="qualidade-card reveal">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Responsivo</h4>
+                            <p>Perfeito em qualquer dispositivo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section Desktop -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Serviços</h2>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card reveal">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Criação de Sites</h3>
+                    <p>Desenvolvimento de websites profissionais, modernos e funcionais, totalmente personalizados para o seu negócio.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-tools"></i>
+                    <h3>Manutenção</h3>
+                    <p>Atualizações constantes, correções de bugs e melhorias para manter seu site sempre funcionando perfeitamente.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-server"></i>
+                    <h3>Hospedagem de Sites</h3>
+                    <p>Soluções de hospedagem robustas e seguras com alta performance, backup automático e suporte técnico 24/7.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Otimização</h3>
+                    <p>Melhoria de performance, SEO e experiência do usuário para aumentar conversões e ranking nos buscadores.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Cardápios Digitais</h3>
+                    <p>Soluções modernas para restaurantes com QR Code, atualizações fáceis e design atrativo.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-brain"></i>
+                    <h3>Sites Inteligentes</h3>
+                    <p>Plataformas com automação, análise de dados e recursos de IA para potencializar seus resultados.</p>
+                </div>
+                <div class="servico-card reveal">
+                    <i class="fas fa-headset"></i>
+                    <h3>Suporte Contínuo</h3>
+                    <p>Acompanhamento constante e suporte técnico para garantir o bom funcionamento do seu site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segmentos Section Desktop -->
+    <section class="segmentos" id="segmentos">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Segmentos Atendidos</h2>
+            </div>
+            <div class="segmentos-grid">
+                <div class="segmento-card reveal">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Clínicas Médicas</h3>
+                    <p>Sites especializados com sistema de agendamento e área para pacientes.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+                <div class="segmento-card reveal">
+                    <i class="fas fa-brain"></i>
+                    <h3>Psicólogos</h3>
+                    <p>Plataformas seguras para consultas online e gestão de pacientes.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+                <div class="segmento-card reveal">
+                    <i class="fas fa-home"></i>
+                    <h3>Corretores</h3>
+                    <p>Catálogos de imóveis interativos com busca avançada e tours virtuais.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+                <div class="segmento-card reveal">
+                    <i class="fas fa-spa"></i>
+                    <h3>Clínicas de Estética</h3>
+                    <p>Galeria de serviços, agendamento online e showcase de resultados.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+                <div class="segmento-card reveal">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Advogados</h3>
+                    <p>Sites profissionais com área de artigos, casos e agendamento de consultas.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+                <div class="segmento-card reveal">
+                    <i class="fas fa-hamburger"></i>
+                    <h3>Restaurantes</h3>
+                    <p>Cardápios digitais, sistema de delivery e integração com redes sociais.</p>
+                    <a href="#" class="btn-exemplo">Ver Exemplo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio Section Desktop -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Portfólio</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="odonto.png" alt="Clínica Médica">
+                        <div class="portfolio-overlay">
+                            <h4>Clínica Saúde Plus</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Clínica Médica</h3>
+                        <p>Site completo com sistema de agendamento online e área do paciente.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">WordPress</span>
+                            <span class="tag">Agendamento</span>
+                            <span class="tag">Responsivo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="Nutri.png" alt="Nutricionista">
+                        <div class="portfolio-overlay">
+                            <h4>Nutrição</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Nutricionista</h3>
+                        <p>Site profissional para area de nutrição.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Agendamento</span>
+                            <span class="tag">Dicas Alimenticias</span>
+                
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="corretor.png" alt="Imobiliária">
+                        <div class="portfolio-overlay">
+                            <h4>Imobiliária Central</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Imobiliária</h3>
+                        <p>Plataforma completa com busca avançada de imóveis e tours virtuais.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Busca Avançada</span>
+                            <span class="tag">Tours 360°</span>
+                            <span class="tag">CRM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="adv.png" alt="Escritório de Advocacia">
+                        <div class="portfolio-overlay">
+                            <h4>Escritório Silva & Associados</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Escritório Jurídico</h3>
+                        <p>Site institucional com blog jurídico e área de consultas online.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Blog</span>
+                            <span class="tag">Consultas</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="este.png" alt="Clínica de Estética">
+                        <div class="portfolio-overlay">
+                            <h4>Beleza Pura</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Clínica de Estética</h3>
+                        <p>Galeria de tratamentos com antes e depois e sistema de agendamento.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Galeria</span>
+                            <span class="tag">Agendamento</span>
+                            <span class="tag">Promoções</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <img src="psico.png" alt="Psicólogo">
+                        <div class="portfolio-overlay">
+                            <h4>Dr. João Psicólogo</h4>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Psicólogo Clínico</h3>
+                        <p>Plataforma para consultas online com sistema de pagamento integrado.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Telemedicina</span>
+                            <span class="tag">Pagamentos</span>
+                            <span class="tag">Seguro</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+    <div class="portfolio-image">
+        <img src="fisio.png" alt="Clínica de Fisioterapia">
+        <div class="portfolio-overlay">
+            <h4>FisioMovimento</h4>
+        </div>
+    </div>
+    <div class="portfolio-info">
+        <h3>Fisioterapia</h3>
+        <p>Site com agendamento online, blog de exercícios e área de pacientes com planos de tratamento personalizados.</p>
+        <div class="portfolio-tags">
+            <span class="tag">Agendamento</span>
+            <span class="tag">Blog</span>
+            <span class="tag">Responsivo</span>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section Desktop -->
+    <section class="depoimentos" id="depoimentos">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Depoimentos</h2>
+            </div>
+            <div class="depoimentos-container">
+                <div class="depoimento-card reveal" id="depoimento1">
+                    <p class="depoimento-text">
+                        "O Daniel desenvolveu um site excepcional para nossa clínica. O sistema de agendamento online revolucionou nosso atendimento e aumentou em 40% nossas consultas. Profissionalismo e competência em cada detalhe."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="autor-info">
+                            <h4>Dr. Carlos Mendes</h4>
+                            <p>Diretor - Clínica Saúde Plus</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="depoimento-nav">
+                    <span class="depoimento-dot active" onclick="mostrarDepoimento(1)"></span>
+                    <span class="depoimento-dot" onclick="mostrarDepoimento(2)"></span>
+                    <span class="depoimento-dot" onclick="mostrarDepoimento(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section Desktop -->
+    <section class="contato" id="contato">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Entre em Contato</h2>
+            </div>
+            <div class="contato-content">
+                <div class="contato-info reveal">
+                    <h3>Vamos conversar sobre seu projeto?</h3>
+                    <div class="contato-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:85997406934">(85) 99740-6934</a>
+                    </div>
+                    <div class="contato-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/5585997406934" target="_blank">WhatsApp</a>
+                    </div>
+                    <div class="contato-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contato@danielrangel.com">contato@danielrangel.com</a>
+                    </div>
+                    <div class="contato-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Fortaleza, CE - Atendimento Nacional</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contato-form reveal">
+                   <a 
+    href="https://wa.me/5585997406934?text=Olá!%20Quero%20falar%20sobre%20um%20site."
+    class="whatsapp-big-button"
+>
+    <i class="fab fa-whatsapp"></i> Enviar Mensagem no WhatsApp
+</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Desktop -->
+    <footer>
+        <p>&copy; 2024 <span class="destaque">Daniel Rangel</span> - Todos os direitos reservados</p>
+        <p>Desenvolvimento Web Profissional | Fortaleza - CE</p>
+    </footer>
+
+    <!-- WhatsApp Flutuante Desktop -->
+    <a href="https://wa.me/5585997406934" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Menu Mobile Melhorado
+        const menuMobile = document.getElementById('menuMobile');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuMobile.addEventListener('click', () => {
+            const isActive = navLinks.classList.contains('active');
+            
+            navLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            const icon = menuMobile.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+            
+            // Prevenir scroll do body quando menu está aberto
+            document.body.style.overflow = isActive ? 'auto' : 'hidden';
+        });
+
+        // Fechar menu ao clicar no overlay
+        menuOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            const icon = menuMobile.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                const icon = menuMobile.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header Scroll Effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.padding = '0.5rem 0';
+                header.style.boxShadow = 'var(--sombra-media)';
+            } else {
+                header.style.padding = '1rem 0';
+                header.style.boxShadow = 'var(--sombra-suave)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Scroll Reveal Suave
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Depoimentos Carousel
+        const depoimentos = [
+            {
+                text: "O Daniel desenvolveu um site excepcional para nossa clínica. O sistema de agendamento online revolucionou nosso atendimento e aumentou em 40% nossas consultas. Profissionalismo e competência em cada detalhe.",
+                autor: "Dr. Carlos Mendes",
+                cargo: "Diretor - Clínica Saúde Plus",
+                icon: "fa-user-md"
+            },
+            {
+                text: "Nosso cardápio digital criado pelo Daniel foi um sucesso! Os clientes amam a facilidade de fazer pedidos pelo QR Code e nossas vendas aumentaram 60%. Recomendo muito!",
+                autor: "Maria Santos",
+                cargo: "Proprietária - Burger House",
+                icon: "fa-utensils"
+            },
+            {
+                text: "A plataforma de imóveis que o Daniel desenvolveu superou nossas expectativas. O sistema de busca é intuitivo e os tours virtuais ajudam muito nas vendas. Excelente trabalho!",
+                autor: "Roberto Almeida",
+                cargo: "Sócio - Imobiliária Central",
+                icon: "fa-home"
+            }
+        ];
+
+        let depoimentoAtual = 0;
+
+        function mostrarDepoimento(index) {
+            const depoimentoCard = document.querySelector('.depoimento-card');
+            const dots = document.querySelectorAll('.depoimento-dot');
+            
+            depoimentoCard.style.opacity = '0';
+            depoimentoCard.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                const depoimento = depoimentos[index - 1];
+                depoimentoCard.innerHTML = `
+                    <p class="depoimento-text">${depoimento.text}</p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar">
+                            <i class="fas ${depoimento.icon}"></i>
+                        </div>
+                        <div class="autor-info">
+                            <h4>${depoimento.autor}</h4>
+                            <p>${depoimento.cargo}</p>
+                        </div>
+                    </div>
+                `;
+                
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index - 1].classList.add('active');
+                
+                depoimentoCard.style.opacity = '1';
+                depoimentoCard.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Auto rotate depoimentos
+        setInterval(() => {
+            depoimentoAtual = (depoimentoAtual + 1) % 3;
+            mostrarDepoimento(depoimentoAtual + 1);
+        }, 5000);
+
+        // Form Submit com animação melhorada
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            loading.classList.add('active');
+            
+            // Simulate form submission
+            setTimeout(() => {
+                loading.classList.remove('active');
+                
+                // Create success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #10b981, #059669);
+                    color: white;
+                    padding: 2.5rem 3rem;
+                    border-radius: 20px;
+                    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+                    z-index: 10000;
+                    text-align: center;
+                    animation: fadeInUp 0.5s ease;
+                    backdrop-filter: blur(10px);
+                `;
+                successMsg.innerHTML = `
+                    <i class="fas fa-check-circle" style="font-size: 3.5rem; margin-bottom: 1rem; color: #fbbf24;"></i>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Mensagem Enviada com Sucesso!</h3>
+                    <p style="opacity: 0.9;">Entrarei em contato em breve.</p>
+                `;
+                
+                document.body.appendChild(successMsg);
+                
+                // Reset form
+                this.reset();
+                
+                // Remove success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.animation = 'fadeOutDown 0.5s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(successMsg);
+                    }, 500);
+                }, 3000);
+            }, 1500);
+        });
+
+        // Smooth scroll para navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada suave
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Efeito hover premium nos cards do portfólio
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const loading = document.getElementById('loading');
+                loading.classList.add('active');
+                
+                setTimeout(() => {
+                    loading.classList.remove('active');
+                    window.open('https://wa.me/5585997406934?text=Olá! Tenho interesse em saber mais sobre este projeto do portfólio.', '_blank');
+                }, 500);
+            });
+        });
+
+        // Typing effect suave para o título
+        const heroTitle = document.querySelector('.hero-text h1');
+        const originalText = heroTitle.innerHTML;
+        heroTitle.innerHTML = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < originalText.length) {
+                heroTitle.innerHTML = originalText.slice(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // Iniciar animação quando a página carregar
+        setTimeout(typeWriter, 500);
+
+        // Adicionar efeito de partículas sutis no hero (apenas em desktop)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                pointer-events: none;
+                opacity: 0.5;
+                background: ${Math.random() > 0.5 ? 'var(--dourado)' : 'var(--branco)'};
+                border-radius: 50%;
+                width: ${Math.random() * 4 + 2}px;
+                height: ${Math.random() * 4 + 2}px;
+                left: ${Math.random() * 100}%;
+                top: 100%;
+                animation: floatUp ${Math.random() * 3 + 2}s linear;
+                z-index: 1;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                document.body.removeChild(particle);
+            }, 5000);
+        }
+
+        // Criar partículas apenas em desktop
+        if (window.innerWidth > 768) {
+            setInterval(createParticle, 2000);
+        }
+
+        // Adicionar CSS para animação das partículas
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeOutDown {
+                to {
+                    opacity: 0;
+                    transform: translate(-50%, -40%);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
