@@ -1850,69 +1850,61 @@
             </p>
         </div>
 
-   <div style="max-width: 1100px; margin: 3rem auto; padding: 0 1rem;">
+<div style="max-width: 1100px; margin: 4rem auto; padding: 0 1rem;">
 
-    <!-- Linha 1: Os dois primeiros pares lado a lado -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-
-        <!-- Par 1 (esquerda superior) -->
-        <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="exemplo 3.jpg" 
-                 alt="Antes - Foto natural" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Antes</div>
+    <!-- PRIMEIRA LINHA - 2 imagens -->
+    <div class="before-after-row">
+        <!-- imagem 1 - Antes -->
+        <div class="before-after-item reveal">
+            <img src="exemplo 3.jpg" alt="Antes" loading="lazy">
+            <div class="label">Antes</div>
         </div>
 
-        <!-- Par 2 (direita superior) -->
-        <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="exemplo 3.2.png" 
-                 alt="Depois - Foto profissional" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(34,197,94,0.92); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Depois</div>
+        <!-- imagem 2 - Depois -->
+        <div class="before-after-item reveal">
+            <img src="exemplo 3.2.png" alt="Depois" loading="lazy">
+            <div class="label depois">Depois</div>
         </div>
-
     </div>
 
-    <!-- Linha 2: Os dois últimos pares lado a lado (embaixo) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+    <!-- ESPAÇO VISÍVEL ENTRE AS LINHAS -->
+    <div style="height: 40px;"></div>
+    <!-- ou use margin-bottom: 4rem; no .before-after-row -->
 
-        <!-- Par 3 (esquerda inferior) -->
-        <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="zaza.jpg" 
-                 alt="Antes - Foto casual homem" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Antes</div>
+    <!-- SEGUNDA LINHA - 2 imagens -->
+    <div class="before-after-row">
+        <!-- imagem 3 - Antes -->
+        <div class="before-after-item reveal">
+            <img src="zaza.jpg" alt="Antes" loading="lazy">
+            <div class="label">Antes</div>
         </div>
 
-        <!-- Par 4 (direita inferior) -->
-        <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="zaza2.png" 
-                 alt="Depois - Headshot executivo" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(34,197,94,0.92); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Depois</div>
+        <!-- imagem 4 - Depois -->
+        <div class="before-after-item reveal">
+            <img src="zaza2.png" alt="Depois" loading="lazy">
+            <div class="label depois">Depois</div>
         </div>
-         </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+    </div>
 
-        <!-- Par 1 (esquerda superior) -->
-        <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="borave5.jpg" 
-                 alt="Antes - Foto natural" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Antes</div>
+    <!-- ESPAÇO VISÍVEL ENTRE AS LINHAS -->
+    <div style="height: 40px;"></div>
+
+    <!-- TERCEIRA LINHA - 2 imagens -->
+    <div class="before-after-row">
+        <!-- imagem 5 - Antes -->
+        <div class="before-after-item reveal">
+            <img src="borave5.jpg" alt="Antes" loading="lazy">
+            <div class="label">Antes</div>
         </div>
-      <div style="position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); background: #f8fafc;">
-            <img src="ai sim.png" 
-                 alt="Depois - Headshot executivo" 
-                 style="width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block;"
-                 loading="lazy">
-            <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(34,197,94,0.92); color: white; padding: 8px 20px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; backdrop-filter: blur(4px);">Depois</div>
+
+        <!-- imagem 6 - Depois -->
+        <div class="before-after-item reveal">
+            <img src="ai sim.png" alt="Depois" loading="lazy">
+            <div class="label depois">Depois</div>
         </div>
+    </div>
+
+</div>
     </div>
 
 
@@ -1971,7 +1963,7 @@
                 <div class="segmento-card reveal">
                     <i class="fas fa-hamburger"></i>
                     <h3>Restaurantes</h3>
-                    <p>Cardápios digitais, sistema de delivery e integração com redes sociais.</p>
+                    <p>Imagens e videos profissionais para seu cardapio e redes sociais.</p>
                     <a href="#" class="btn-exemplo">Ver Exemplo</a>
                 </div>
             </div>
@@ -2528,6 +2520,7 @@
 </body>
 
 </html>
+
 
 
 
